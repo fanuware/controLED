@@ -1,0 +1,324 @@
+<!doctype html>
+<html>
+<head>
+    <title>ControLED 8x8</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="static/controled.ico">
+    <link rel="stylesheet" type="text/css" href="static/controLed.css">
+    <link rel="stylesheet" type="text/css" href="static/spectrum.css">
+    <script src="static/jquery-1.9.1.js"></script>
+    <script src='static/docs.js'></script>
+</head>
+<body>
+    <h2>ControLED 8x8</h2>
+    <div id="connecting">
+        <div class="text">
+    CONNECTING
+        </div>
+        <div class="box">
+        <div class="comp"></div>
+        <div class="loader"></div>
+        <div class="con"></div>
+        <div class="byte"></div>
+        <div class="server"></div>
+        </div>
+        </div>
+    <div id="connected">
+    <table id="leds">
+      <tr>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+      </tr>
+      <tr>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+      </tr>
+      <tr>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+      </tr>
+      <tr>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+      </tr>
+      <tr>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+      </tr>
+      <tr>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+      </tr>
+      <tr>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+      </tr>
+      <tr>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+        <td><button><span></span></button></td>
+      </tr>
+    </table>
+    <p id="demo"></p>
+        <br>
+        <div id="commands">
+            <button onclick="sendCommandClickEvent('off')">Clear</button>
+            <button onclick="sendCommandClickEvent('snake')">Snake</button>
+            <button onclick="sendCommandClickEvent('fade')">Animation1</button>
+            <button onclick="sendCommandClickEvent('blink')">Animation2</button>
+        </div><br>
+        
+    <form id="select_color">
+        <div>
+            <input id="color_1" type="radio" name="colors" checked="checked" value="rgb(1, 112, 193)">
+            <script src='static/spectrum.js'></script>
+            <input id='colorpicker_1' onchange="update_color(this, 'color_1')"/>
+            <script>$("#colorpicker_1").spectrum({color: "rgb(1, 112, 193)", showAlpha: true, preferredFormat: "rgb" });</script>
+        </div>
+        <div>
+            <input id="color_2" type="radio" name="colors" value="rgb(0, 175, 80)">
+            <script src='static/spectrum.js'></script>
+            <input id='colorpicker_2' onchange="update_color(this, 'color_2')"/>
+            <script>$("#colorpicker_2").spectrum({color: "rgb(0, 175, 80)", showAlpha: true, preferredFormat: "rgb" });</script>
+        </div>
+        <div>
+            <input id="color_3" type="radio" name="colors" value="rgb(245, 255, 0)">
+            <script src='static/spectrum.js'></script>
+            <input id='colorpicker_3' onchange="update_color(this, 'color_3')"/>
+            <script>$("#colorpicker_3").spectrum({color: "rgb(245, 255, 0)", showAlpha: true, preferredFormat: "rgb" });</script>
+        </div>
+        <div>
+            <input id="color_4" type="radio" name="colors" value="rgb(255, 167, 0)">
+            <script src='static/spectrum.js'></script>
+            <input id='colorpicker_4' onchange="update_color(this, 'color_4')"/>
+            <script>$("#colorpicker_4").spectrum({color: "rgb(255, 167, 0)", showAlpha: true, preferredFormat: "rgb" });</script>
+        </div>
+        <div>
+            <input id="color_5" type="radio" name="colors" value="rgb(255, 0, 0)">
+            <script src='static/spectrum.js'></script>
+            <input id='colorpicker_5' onchange="update_color(this, 'color_5')"/>
+            <script>$("#colorpicker_5").spectrum({color: "rgb(255, 0, 0)", showAlpha: true, preferredFormat: "rgb" });</script>
+        </div>
+        <div>
+            <input id="color_6" type="radio" name="colors" value="rgb(0, 226, 255)">
+            <script src='static/spectrum.js'></script>
+            <input id='colorpicker_6' onchange="update_color(this, 'color_6')"/>
+            <script>$("#colorpicker_6").spectrum({color: "rgb(0, 226, 255)", showAlpha: true, preferredFormat: "rgb" });</script>
+        </div>
+    </form>
+    
+    <div id="sendMsg">
+        <input value="F" id="send_text">
+        <button onclick="sendText()">Send</button>
+        <p id="receive"></p>
+    </div>
+    </div>
+ 
+    <script>
+        // resolve host ip
+        var host = window.location.host ? window.location.host : "localhost:8080";
+        var DEBUG = false;
+        if (DEBUG) {
+            document.getElementById("sendMsg").style.visibility = "visible";
+        }
+
+        // connect websocket
+        var connection;
+        const socketMessageListener = (e) => {
+            if (DEBUG) {
+                var newcontent = document.createElement('div');
+                newcontent.innerHTML = e.data;
+                document.getElementById("receive").appendChild(newcontent);
+            }
+            if (e.data == "ping") {
+                lastPingDate = new Date();
+                connection.send("pong");
+            } else {
+                changeLeds(e.data);
+            }
+        };
+        const socketOpenListener = (event) => {
+            lastPingDate = new Date();
+            connectionAlive();
+            document.getElementById("connected").style.visibility = "visible";
+            document.getElementById("connecting").style.visibility = "hidden";
+            if (DEBUG) {
+                var newcontent = document.createElement('div');
+                newcontent.innerHTML = ('WebSocket OnOpen ' + error);
+                document.getElementById("receive").appendChild(newcontent);
+            }
+        };
+        const socketCloseListener = (event) => {
+            if (connection) {
+                document.getElementById("connected").style.visibility = "hidden";
+                document.getElementById("connecting").style.visibility = "visible";
+            }
+            connection = new WebSocket("ws://"+host+"/ws");
+            connection.addEventListener('open', socketOpenListener);
+            connection.addEventListener('message', socketMessageListener);
+            connection.addEventListener('close', socketCloseListener);
+        };
+        socketCloseListener();
+
+        // connection alive watchdog
+        function connectionAlive() {
+            if ((new Date() - lastPingDate) > 5000) {
+                connection.close();
+                document.getElementById("connected").style.visibility = "hidden";
+                document.getElementById("connecting").style.visibility = "visible";
+            } else
+            {
+                // continue watchdog
+                setTimeout(()=>{
+                    connectionAlive();
+                }, 5000);
+            }
+        }
+
+        // send text
+        function sendText() {
+            connection.send(document.getElementById('send_text').value);
+        }
+
+        // color picker update
+        function update_color(cur, id){
+            document.getElementById(id).checked = true;
+            document.getElementById(id).value = cur.value;
+            DEBUG && (document.getElementById("demo").innerHTML = id);
+        }
+
+        // colors to hex, i.e rgba(11,0,1,0.2) -> b000114
+        function colorToHex(color) {
+
+            if (color.substr(0, 1) === '#') {
+                return color;
+            }
+            if (color.startsWith("rgba")) {
+                var digits = /(.*?)rgba\((\d+), (\d+), (\d+), ([\d\.]+)\)/.exec(color);
+                var red = parseInt(digits[2]); // 0-255
+                var green = parseInt(digits[3]); // 0-255
+                var blue = parseInt(digits[4]); // 0-255
+                var alpha = parseInt(parseFloat(digits[5]) * 100.0); // 0-100
+
+            } else {
+                var digits = /(.*?)rgb\((\d+), (\d+), (\d+)\)/.exec(color);
+                var red = parseInt(digits[2]);
+                var green = parseInt(digits[3]);
+                var blue = parseInt(digits[4]);
+                var alpha = 100;
+            }
+            var rgba = ( alpha | (blue << 8) | (green << 16) | (red << 24) ) >>> 0; // unsigned int
+            return rgba.toString(16);
+        };
+
+        // hex to color, i.e b000114 -> rgba(11,0,1,0.2)
+        function hexToColor(hex) {
+            var num = parseInt("0x" +hex);
+            var red = num >> 24 & 0xFF;
+            var green = num >> 16 & 0xFF;
+            var blue = num >> 8 & 0xFF;
+            var alpha = parseFloat(num & 0xFF) / 100;
+            return "rgba("+red+","+green+","+blue+","+alpha+")";
+        }
+
+        // all led buttons
+        function changeLedClickEvent(i) {
+            return function(obj) {
+                var color = document.getElementById('color_1').value;
+                color = document.getElementById("select_color").colors.value;
+                colorHex = colorToHex(color);
+                var message = JSON.stringify( { leds: [i, colorHex] } );
+                connection.send(message);
+                DEBUG && (document.getElementById("demo").innerHTML = colorHex);
+           };
+        }
+        function changeLeds(leds) {
+            leds = JSON.parse(leds)["leds"];
+            for (var i = 0; i < leds.length; i=i+2) {
+                buttons[leds[i]].firstChild.style.background = hexToColor(leds[i+1]);
+            }
+        }
+        var buttons = document.getElementById('leds').getElementsByTagName('button');
+        for (var i = 0; i < buttons.length; i++) { 
+          buttons[i].addEventListener("mousedown", changeLedClickEvent(i)); 
+        }
+
+        function sendCommandClickEvent(value) {
+            var message = JSON.stringify( { "cmd" : value } );
+            connection.send(message);
+        }
+
+        // window keyboard listener
+        var keys = {};
+        window.addEventListener("keydown", function(e){
+                keys[e.keyCode] = true;
+                switch(e.keyCode){
+                case 37:
+                    sendCommandClickEvent("left");
+                    e.preventDefault();
+                    break;
+                case 39:
+                    sendCommandClickEvent("right");
+                    e.preventDefault();
+                    break;
+                case 38:
+                    sendCommandClickEvent("up");
+                    e.preventDefault();
+                    break;
+                case 40:
+                    sendCommandClickEvent("down");
+                    e.preventDefault();
+                    break;
+                }
+            }, false);
+    </script>
+</body>
+</html>

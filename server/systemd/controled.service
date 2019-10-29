@@ -1,0 +1,11 @@
+[Unit]
+Description=Control LED Matrix on Raspberry Pi
+
+[Service]
+ExecStart=/usr/local/bin/controLED -p 8421 -d
+Restart=always
+User=root
+After=network.target
+
+[Install]
+WantedBy=multi-user.target

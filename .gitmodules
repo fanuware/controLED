@@ -1,0 +1,6 @@
+[submodule "server/lib/SimpleJSON"]
+	path = server/lib/SimpleJSON
+	url = https://github.com/nbsdx/SimpleJSON.git
+[submodule "server/lib/Simple-WebSocket-Server"]
+	path = server/lib/Simple-WebSocket-Server
+	url = https://github.com/eidheim/Simple-WebSocket-Server.git
