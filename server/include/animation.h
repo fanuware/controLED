@@ -17,39 +17,39 @@
 class Animation
 {
 public:
-	// override member
-	void runAnimation(Rgba *leds, int rows, int columns, std::function<void()> updateCallback);
-	// return true if command accepted
-	virtual bool controlCommand(string cmd) { return false; }
-	virtual bool controlLed(int led, Rgba color) { return false; }
-	
-	// static
-	static bool stopAnimation();
-	bool isRunning();
-	static thread *s_threadRunnable;
+    // override member
+    void runAnimation(Rgba *leds, int rows, int columns, std::function<void()> updateCallback);
+    // return true if command accepted
+    virtual bool controlCommand(string cmd) { return false; }
+    virtual bool controlLed(int led, Rgba color) { return false; }
+    
+    // static
+    static bool stopAnimation();
+    bool isRunning();
+    static thread *s_threadRunnable;
 protected:
-	Rgba *m_leds;
-	int m_size;
-	int m_sizeRows;
-	int m_sizeColumns;
-	std::function<void()> m_updateCallback;
-	bool sleepInterruptable(int sleepMillis);
+    Rgba *m_leds;
+    int m_size;
+    int m_sizeRows;
+    int m_sizeColumns;
+    std::function<void()> m_updateCallback;
+    bool sleepInterruptable(int sleepMillis);
 
-	// override member
-	// returns fails when animation done, true if interrupted
-	virtual bool runnable() = 0;
+    // override member
+    // returns fails when animation done, true if interrupted
+    virtual bool runnable() = 0;
 private:
-	static void runnableWrapper();
+    static void runnableWrapper();
 
-	static bool s_animationRunning;
-	static Animation *s_currentAnimation;
-	static Animation *s_setCurrentAnimation;
+    static bool s_animationRunning;
+    static Animation *s_currentAnimation;
+    static Animation *s_setCurrentAnimation;
 
-	static once_flag spawnThreadFlag;
-	static bool s_animationStartStopFlag;
-	static bool s_notifyNewAnimation;
-	static std::mutex s_mtxAnimationStartStop;
-	static std::condition_variable s_cvAnimationStartStop;
+    static once_flag spawnThreadFlag;
+    static bool s_animationStartStopFlag;
+    static bool s_notifyNewAnimation;
+    static std::mutex s_mtxAnimationStartStop;
+    static std::condition_variable s_cvAnimationStartStop;
 };
 
 
@@ -58,7 +58,7 @@ private:
 class FadeAnimation : public Animation
 {
 private:
-	bool runnable();
+    bool runnable();
 };
 
 
@@ -67,7 +67,7 @@ private:
 class BlinkAnimation : public Animation
 {
 private:
-	bool runnable();
+    bool runnable();
 };
 
 #endif

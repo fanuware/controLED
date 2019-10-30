@@ -18,18 +18,18 @@
 class DeviceLedWS2812: public DeviceLed
 {
 public:
-	DeviceLedWS2812(int size);
-	void setLeds(const Rgba *leds);
-	void setLed(const int n, const Rgba &rgba);
+    DeviceLedWS2812(int size);
+    void setLeds(const Rgba *leds);
+    void setLed(const int n, const Rgba &rgba);
 private:
-	void runnableNotifyChanged();
-	const float BRIGHTNESS_MAX = 0.05;
+    void runnableNotifyChanged();
+    const float BRIGHTNESS_MAX = 0.05;
 
-	// led driver
-	int m_size;
-	ws2811_t ledstring;
-	Rgba *m_leds;
-	ws2811_channel_t channel0;
+    // led driver
+    int m_size;
+    ws2811_t ledstring;
+    Rgba *m_leds;
+    ws2811_channel_t channel0;
 };
 
 #endif

@@ -7,22 +7,22 @@
 
 class LabrinthAnimation : public Animation
 {
-	enum class eState {
-		INIT_LABRINTH,
-		SOLVE_LABRINTH
-	};
-	
-	// override: animation
-	bool runnable();
-	bool controlLed(int led, Rgba color);
-	eState state;
-	mutex mxWaitSolve;
-	condition_variable cvWaitSolve;
-	int target;
+    enum class eState {
+        INIT_LABRINTH,
+        SOLVE_LABRINTH
+    };
+    
+    // override: animation
+    bool runnable();
+    bool controlLed(int led, Rgba color);
+    eState state;
+    mutex mxWaitSolve;
+    condition_variable cvWaitSolve;
+    int target;
 public:
-	LabrinthAnimation() : Animation() {
-		target = m_size - 1;
-	}
+    LabrinthAnimation() : Animation() {
+        target = m_size - 1;
+    }
 };
 
 #endif

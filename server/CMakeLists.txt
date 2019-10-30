@@ -60,7 +60,7 @@ set(SOURCES
 
 # executable
 add_executable(controLED
-	${SOURCES} ${HEADERS}
+    ${SOURCES} ${HEADERS}
 )
 
 # include directories
@@ -89,7 +89,7 @@ target_link_libraries(controLED ${wiringPi_LIB})
 # install executable
 install(TARGETS controLED
     RUNTIME DESTINATION bin
-	COMPONENT applications)
+    COMPONENT applications)
 
 # systemd service
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/systemd/controled.service

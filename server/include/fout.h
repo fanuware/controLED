@@ -17,30 +17,30 @@ using namespace std;
 class Fout : public ostringstream
 {
 public:
-	enum eMode {
-		INTERACTIVE, // print as is, without pre/suffix
-		LOG_NOD, // NOT DAEMON, print log message when
-		LOG }; // ALWAYS, print log message
+    enum eMode {
+        INTERACTIVE, // print as is, without pre/suffix
+        LOG_NOD, // NOT DAEMON, print log message when
+        LOG }; // ALWAYS, print log message
 
-	Fout(eMode currentMode = INTERACTIVE);
-	~Fout();
-	static void setDefaults(function<string(void)> prefix, function<string(void)> postfixFunc, eMode mode);
+    Fout(eMode currentMode = INTERACTIVE);
+    ~Fout();
+    static void setDefaults(function<string(void)> prefix, function<string(void)> postfixFunc, eMode mode);
 
-	static string currentDateTime() {
-		time_t now = time(0);
-		struct tm tstruct;
-		char buf[80];
-		tstruct = *localtime(&now);
-		strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
-		return buf;
-	}
+    static string currentDateTime() {
+        time_t now = time(0);
+        struct tm tstruct;
+        char buf[80];
+        tstruct = *localtime(&now);
+        strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
+        return buf;
+    }
 
 private:
-	static mutex s_mtxCout;
-	static eMode s_processMode;
-	static function<string(void)> s_prefixFunc;
-	static function<string(void)> s_postfixFunc;
-	eMode m_printMode;
+    static mutex s_mtxCout;
+    static eMode s_processMode;
+    static function<string(void)> s_prefixFunc;
+    static function<string(void)> s_postfixFunc;
+    eMode m_printMode;
 };
 
 #endif
