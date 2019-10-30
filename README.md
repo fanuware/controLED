@@ -18,7 +18,7 @@ Use the package manager [APT](https://packages.debian.org/en/apt) to install dep
 ### Install dependencies
 
 ```bash
-apt-get install libboost-dev
+apt-get install libboost-system-dev
 apt-get install libssl-dev
 ```
 
