@@ -4,7 +4,7 @@
     <title>ControLED 8x8</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta charset="utf-8">
-    <link rel="shortcut icon" href="static/controled.ico">
+    <link rel="shortcut icon" href="static/controLed.ico">
     <link rel="stylesheet" type="text/css" href="static/controLed.css">
     <link rel="stylesheet" type="text/css" href="static/spectrum.css">
     <script src="static/jquery-1.9.1.js"></script>
@@ -25,7 +25,7 @@
         </div>
         </div>
     <div id="connected">
-    <table id="leds">
+    <table id="leds" oncontextmenu="return false">
       <tr>
         <td><button><span></span></button></td>
         <td><button><span></span></button></td>
@@ -114,6 +114,7 @@
             <button onclick="sendCommandClickEvent('snake')">Snake</button>
             <button onclick="sendCommandClickEvent('fade')">Animation1</button>
             <button onclick="sendCommandClickEvent('blink')">Animation2</button>
+            <button onclick="sendCommandClickEvent('labr')">Labyrinth</button>
         </div><br>
         
     <form id="select_color">
@@ -272,10 +273,17 @@
         // all led buttons
         function changeLedClickEvent(i) {
             return function(obj) {
-                var color = document.getElementById('color_1').value;
-                color = document.getElementById("select_color").colors.value;
-                colorHex = colorToHex(color);
-                var message = JSON.stringify( { leds: [i, colorHex] } );
+                var message
+                // right click
+                if (obj.which == 3) {
+                    var color = document.getElementById('color_1').value;
+                    message = JSON.stringify( { leds: [i, 0] } );
+                } else {
+                    var color = document.getElementById('color_1').value;
+                    color = document.getElementById("select_color").colors.value;
+                    colorHex = colorToHex(color);
+                    message = JSON.stringify( { leds: [i, colorHex] } );
+                }
                 connection.send(message);
                 DEBUG && (document.getElementById("demo").innerHTML = colorHex);
            };
