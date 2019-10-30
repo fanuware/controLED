@@ -1,8 +1,9 @@
 # controLED
 
-Controls a LED Matrix on the Raspberry Pi.
+Controls a LED Matrix on the Raspberry Pi or another linux based system.
 
-controLed is running on a Raspberry Pi 3 B:
+LED's can be light up on a Raspberry Pi 3 B.
+It's also possible to use it on another systems(i.e Ubuntu), just that the LED's are held virtually.
 - Websocket connections allow controlling the LED's from a html frontend.
 - Multiple connections are allowed to connect and control simultaneously.
 - Different animations are available and can be started/played (Snake Game, Light Show, Dijkstras shortest path)
@@ -21,7 +22,7 @@ apt-get install libboost-dev
 apt-get install libssl-dev
 ```
 
-### Configuration LED device
+### Configure LED device on your Raspberry
 
 #### Configuration for WS2812 PWM
 /etc/modprobe.d/snd-blacklist.conf

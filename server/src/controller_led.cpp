@@ -18,7 +18,9 @@ void ControllerLed::resetAll()
     {
         m_leds[i] = Rgba(Rgba::Color::OFF);
     }
-    m_deviceLed->setLeds(m_leds);
+    if (m_deviceLed) {
+        m_deviceLed->setLeds(m_leds);
+    }
 }
 
 
@@ -141,7 +143,9 @@ bool ControllerLed::sendBroadcastAll(bool stopAnimation)
     (stopAnimation) && Animation::stopAnimation();
 
     // local, device led
-    m_deviceLed->setLeds(m_leds);
+    if (m_deviceLed) {
+        m_deviceLed->setLeds(m_leds);
+    }
 
     // network, create JSON-object and send broadcast
     json::JSON obj;

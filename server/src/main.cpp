@@ -1,8 +1,12 @@
 #include "fout.h"
 #include "webserver.h"
 #include "controller_led.h"
+
+#ifdef RASPBERRY_PI
 #include "device_led_ws2812.h"
 #include "device_led_74hc595.h"
+#endif
+
 #include "animation.h"
 #include "snake_animation.h"
 #include "labrinth_animation.h"
@@ -103,6 +107,8 @@ int main(int argc, char *argv[]) {
     // control all LED's (local and external)
     ControllerLed controller(LED_ROWS, LED_COLUMNS);
     for (auto & c : ledDevice) c = toupper(c);
+
+#ifdef RASPBERRY_PI
     if (ledDevice == "PWM")
     {
         controller.attachDeviceLed((DeviceLed*) new DeviceLedWS2812(LED_ROWS * LED_COLUMNS));
@@ -114,6 +120,8 @@ int main(int argc, char *argv[]) {
         Fout{} << "Local Led device: " << ledDevice << endl;
 
     }
+#endif
+
     controller.addAnimation("fade", new FadeAnimation());
     controller.addAnimation("blink", new BlinkAnimation());
     controller.addAnimation("snake", new SnakeAnimation());
