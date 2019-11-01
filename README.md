@@ -47,6 +47,7 @@ dtparam=spi=on
 ```bash
 git clone <controLED-repo>
 cd <controLED-project>
+git submodule update --init
 mkdir build
 cd build
 cmake ../
