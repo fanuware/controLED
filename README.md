@@ -68,3 +68,9 @@ cd <project-root>
 cd html
 chromium-browser controled.html
 ```
+
+
+## License
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)][license]
+
+[license]: https://github.com/fanuware/controLED/blob/master/LICENSE
