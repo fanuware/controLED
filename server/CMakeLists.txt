@@ -28,7 +28,7 @@ if (RASPBERRY_PI)
         rpi_ws281x
         EXCLUDE_FROM_ALL false
         GIT_REPOSITORY https://github.com/jgarff/rpi_ws281x
-        GIT_TAG 48cec2139534a2da9f8cdf4f26fe253e8d6e05f2
+        GIT_TAG 6a720cbd42d30be28e0f5c5ff6b1c00a4588a29b
         SOURCE_DIR "${CMAKE_BINARY_DIR}/rpi_ws281x"
         CONFIGURE_COMMAND ""
         BUILD_COMMAND "scons" "--directory=${CMAKE_BINARY_DIR}/rpi_ws281x"
@@ -98,7 +98,7 @@ if (RASPBERRY_PI)
     # ws281x library
     target_include_directories(controLED PRIVATE ws28x-lib)
     target_link_libraries(controLED ws28x-lib)
-    add_dependencies(controLED ws28x-lib)
+    add_dependencies(controLED rpi_ws281x)
 endif()
 
 # OpenSSL library

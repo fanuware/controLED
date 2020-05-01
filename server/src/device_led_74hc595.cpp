@@ -65,9 +65,9 @@ void DeviceLed74HC595::runnableNotifyChanged()
                     blueOn = (float)m_leds[n].blue() * m_leds[n].alpha() >= compRange;
                 }
                 anyLedOn |= redOn | greenOn | blueOn;
-                colorSet[RED][i] = colorSet[RED][i] & ~(redOn << 7 - j);
-                colorSet[GREEN][i] = colorSet[GREEN][i] & ~(greenOn << 7 - j);
-                colorSet[BLUE][i] = colorSet[BLUE][i] & ~(blueOn << 7 - j);
+                colorSet[RED][i] = colorSet[RED][i] & ~(redOn << (7 - j));
+                colorSet[GREEN][i] = colorSet[GREEN][i] & ~(greenOn << (7 - j));
+                colorSet[BLUE][i] = colorSet[BLUE][i] & ~(blueOn << (7 - j));
             }
         }
 
@@ -79,7 +79,7 @@ void DeviceLed74HC595::runnableNotifyChanged()
             ledData[1] = 0xff;
 
             // red, green and blue
-            for (int c = 0; c < sizeof(colorSet); c++)
+            for (unsigned int c = 0; c < sizeof(colorSet); c++)
             {
                 ledData[0] = 0xff;
                 ledData[2] = 0xff;
